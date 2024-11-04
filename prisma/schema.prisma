@@ -1,0 +1,124 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = "mysql://root:42331@localhost:3306/bbdd_spaweb"
+}
+
+model cita {
+  cita_id     Int       @id @default(autoincrement())
+  cliente_id  Int?
+  servicio_id Int?
+  fecha       DateTime  @db.Date
+  hora        DateTime  @db.Time(0)
+  estado      String?   @default("Pendiente") @db.VarChar(50)
+  notas       String?   @db.Text
+  cliente     cliente?  @relation(fields: [cliente_id], references: [cliente_id], onDelete: NoAction, onUpdate: NoAction, map: "cita_ibfk_1")
+  servicio    servicio? @relation(fields: [servicio_id], references: [servicio_id], onDelete: NoAction, onUpdate: NoAction, map: "cita_ibfk_2")
+
+  @@index([cliente_id], map: "cliente_id")
+  @@index([fecha], map: "idx_cita_fecha")
+  @@index([servicio_id], map: "servicio_id")
+}
+
+model cliente {
+  cliente_id     Int          @id @default(autoincrement())
+  nombre         String       @db.VarChar(100)
+  apellido       String       @db.VarChar(100)
+  email          String       @unique(map: "email") @db.VarChar(100)
+  telefono       String?      @db.VarChar(15)
+  direccion      String?      @db.VarChar(255)
+  fecha_registro DateTime?    @default(dbgenerated("(now())")) @db.Timestamp(0)
+  contrasena     String       @db.VarChar(255)
+  cita           cita[]
+  comentario     comentario[]
+  consulta       consulta[]
+}
+
+model comentario {
+  comentario_id Int       @id @default(autoincrement())
+  cliente_id    Int?
+  nombre        String?   @db.VarChar(100)
+  email         String?   @db.VarChar(100)
+  contenido     String    @db.Text
+  fecha         DateTime? @default(dbgenerated("(now())")) @db.Timestamp(0)
+  visible       Boolean?  @default(true)
+  cliente       cliente?  @relation(fields: [cliente_id], references: [cliente_id], onDelete: NoAction, onUpdate: NoAction, map: "comentario_ibfk_1")
+
+  @@index([cliente_id], map: "cliente_id")
+}
+
+model consulta {
+  consulta_id Int       @id @default(autoincrement())
+  cliente_id  Int?
+  nombre      String    @db.VarChar(100)
+  email       String    @db.VarChar(100)
+  mensaje     String    @db.Text
+  fecha       DateTime? @default(dbgenerated("(now())")) @db.Timestamp(0)
+  respondida  Boolean?  @default(false)
+  respuesta   String?   @db.Text
+  cliente     cliente?  @relation(fields: [cliente_id], references: [cliente_id], onDelete: NoAction, onUpdate: NoAction, map: "consulta_ibfk_1")
+
+  @@index([cliente_id], map: "cliente_id")
+  @@index([fecha], map: "idx_consulta_fecha")
+}
+
+model galeria {
+  imagen_id   Int     @id @default(autoincrement())
+  url         String  @db.VarChar(255)
+  descripcion String? @db.Text
+}
+
+model noticia {
+  noticia_id        Int       @id @default(autoincrement())
+  titulo            String    @db.VarChar(255)
+  contenido         String?   @db.Text
+  fecha_publicacion DateTime? @default(dbgenerated("(now())")) @db.Timestamp(0)
+}
+
+model personal {
+  personal_id Int     @id @default(autoincrement())
+  nombre      String  @db.VarChar(100)
+  apellido    String  @db.VarChar(100)
+  rol         String? @db.VarChar(50)
+  email       String  @unique(map: "email") @db.VarChar(100)
+  contrasena  String  @db.VarChar(255)
+}
+
+model redsocial {
+  redsocial_id        Int                   @id @default(autoincrement())
+  nombre              String                @db.VarChar(100)
+  url                 String                @db.VarChar(255)
+  ubicacion_redsocial ubicacion_redsocial[]
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model servicio {
+  servicio_id Int      @id @default(autoincrement())
+  nombre      String   @db.VarChar(100)
+  descripcion String?  @db.Text
+  precio      Decimal? @db.Decimal(10, 2)
+  duracion    Int?
+  cita        cita[]
+}
+
+model ubicacion {
+  ubicacion_id        Int                   @id @default(autoincrement())
+  nombre              String                @db.VarChar(100)
+  direccion           String                @db.VarChar(255)
+  latitud             Decimal?              @db.Decimal(10, 8)
+  longitud            Decimal?              @db.Decimal(11, 8)
+  ubicacion_redsocial ubicacion_redsocial[]
+}
+
+model ubicacion_redsocial {
+  ubicacion_id Int
+  redsocial_id Int
+  ubicacion    ubicacion @relation(fields: [ubicacion_id], references: [ubicacion_id], onDelete: NoAction, onUpdate: NoAction, map: "ubicacion_redsocial_ibfk_1")
+  redsocial    redsocial @relation(fields: [redsocial_id], references: [redsocial_id], onDelete: NoAction, onUpdate: NoAction, map: "ubicacion_redsocial_ibfk_2")
+
+  @@id([ubicacion_id, redsocial_id])
+  @@index([redsocial_id], map: "redsocial_id")
+}
