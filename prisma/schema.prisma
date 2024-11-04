@@ -2,10 +2,12 @@ generator client {
   provider = "prisma-client-js"
 }
 
+// schema.prisma
 datasource db {
   provider = "mysql"
-  url      = "mysql://root:42331@localhost:3306/bbdd_spaweb"
+  url      = env("DATABASE_URL")
 }
+
 
 model cita {
   cita_id     Int       @id @default(autoincrement())
