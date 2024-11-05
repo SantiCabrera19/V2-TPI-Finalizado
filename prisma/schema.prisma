@@ -2,12 +2,10 @@ generator client {
   provider = "prisma-client-js"
 }
 
-// schema.prisma
 datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
 }
-
 
 model cita {
   cita_id     Int       @id @default(autoincrement())
