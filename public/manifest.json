@@ -1,11 +1,13 @@
 {
-  "name": "TPI Terminado",
-  "short_name": "TPI",
-  "description": "Tienda de productos informáticos",
+  "name": "Spa Sentirse Bien",
+  "short_name": "Spa",
+  "description": "Spa y centro de bienestar",
   "start_url": "/",
+  "scope": "/",
   "display": "standalone",
+  "orientation": "portrait",
   "background_color": "#ffffff",
-  "theme_color": "#000000",
+  "theme_color": "#fdbeff",
   "icons": [
     {
       "src": "/LogoTPI-192x192.png",
