@@ -1,11 +1,11 @@
-const CACHE_NAME = 'spa-cache-v1';
+const CACHE_NAME = 'spa-cache-v2';
 
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then((cache) => {
         return cache.addAll([
-          '/',
+          '/?standalone=true',
           '/manifest.json',
           '/icon.png',
           '/image.png',
@@ -34,6 +34,15 @@ self.addEventListener('activate', (event) => {
 });
 
 self.addEventListener('fetch', (event) => {
+  if (event.request.mode === 'navigate') {
+    const url = new URL(event.request.url);
+    url.searchParams.set('standalone', 'true');
+    event.respondWith(
+      fetch(new Request(url.toString(), event.request))
+    );
+    return;
+  }
+
   event.respondWith(
     caches.match(event.request)
       .then((response) => {
