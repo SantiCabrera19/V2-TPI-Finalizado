@@ -16,6 +16,23 @@ export default function RootLayout({ children }) {
         <CartProvider>
           {children}
         </CartProvider>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              if ('serviceWorker' in navigator) {
+                window.addEventListener('load', function() {
+                  navigator.serviceWorker.register('/service-worker.js')
+                    .then(function(registration) {
+                      console.log('SW registrado correctamente');
+                    })
+                    .catch(function(err) {
+                      console.log('SW error:', err);
+                    });
+                });
+              }
+            `,
+          }}
+        />
       </body>
     </html>
   );
