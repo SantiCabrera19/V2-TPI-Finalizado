@@ -9,8 +9,8 @@ export function HeaderComponent() {
 
   return (
     <header className="bg-white shadow-md">
-      <div className="container mx-auto px-2 py-2 flex justify-between items-center">
-        <Link href="/" className="text-xl font-bold text-pink-600">
+      <div className="container mx-auto px-4 py-2 flex justify-between items-center">
+        <Link href="/" className="text-lg font-bold text-pink-600">
           Mi Tienda
         </Link>
         <Link href="/cart" className="relative">

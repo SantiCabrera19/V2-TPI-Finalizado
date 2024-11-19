@@ -63,8 +63,16 @@
       @apply bg-background text-foreground;
     }
 
-    .some-class {
-      @apply flex-col;
+    .container {
+      @apply px-4;
+    }
+
+    header {
+      @apply h-auto;
+    }
+
+    .text-xl {
+      @apply text-lg;
     }
 
     h1 {

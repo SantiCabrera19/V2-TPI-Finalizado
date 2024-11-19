@@ -37,7 +37,7 @@ export function PaginaSpa() {
           />
           <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-background/0"></div>
           <div className="absolute inset-0 flex flex-col items-center justify-center px-4 text-center">
-            <h1 className="text-2xl font-bold tracking-tighter sm:text-3xl">Escapa al Spa Sentirse Bien</h1>
+            <h1 className="text-lg font-bold tracking-tighter sm:text-2xl">Escapa al Spa Sentirse Bien</h1>
             <p className="mt-4 max-w-md text-muted-foreground md:text-lg">
               Experimenta lo máximo en relajación y rejuvenecimiento en nuestro lujoso spa. Disfruta de nuestros tratamientos exclusivos y promociones.
             </p>
