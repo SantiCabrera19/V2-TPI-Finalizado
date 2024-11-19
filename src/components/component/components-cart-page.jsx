@@ -4,13 +4,21 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { Trash2, Plus, Minus } from 'lucide-react'
 import { Button } from "@/components/ui/button"
+import { useRouter } from 'next/navigation'
 
 export function CartPageComponent({
   items = [],
   updateQuantity,
   removeItem
 }) {
+  const router = useRouter()
   const total = items.reduce((sum, item) => sum + item.price * item.quantity, 0)
+
+  const handleCheckout = () => {
+    // Guardamos el total en localStorage para recuperarlo en checkout
+    localStorage.setItem('cartTotal', total.toFixed(2))
+    router.push('/checkout')
+  }
 
   return (
     (<div className="min-h-screen bg-[#FFF5F8] py-8">
@@ -80,6 +88,7 @@ export function CartPageComponent({
                 </div>
               </div>
               <Button
+                onClick={handleCheckout}
                 className="w-full mt-6 bg-[#4CAF50] hover:bg-[#45a049] text-white font-bold py-3 px-4 rounded">
                 Proceder al pago
               </Button>
