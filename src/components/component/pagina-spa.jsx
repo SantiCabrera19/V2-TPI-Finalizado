@@ -26,7 +26,7 @@ export function PaginaSpa() {
     <div className="bg-background text-foreground">
       <Header />
       <main>
-        <section className="relative h-[40vh] md:h-[60vh]">
+        <section className="relative h-[40vh] md:h-[60vh] overflow-hidden">
           <img
             src="/image.png"
             alt="Spa Sentirse Bien Cover"
@@ -37,11 +37,13 @@ export function PaginaSpa() {
           />
           <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-background/0"></div>
           <div className="absolute inset-0 flex flex-col items-center justify-center px-4 text-center">
-            <h1 className="text-lg font-bold tracking-tighter sm:text-2xl">Escapa al Spa Sentirse Bien</h1>
-            <p className="mt-4 max-w-md text-muted-foreground md:text-lg">
-              Experimenta lo máximo en relajación y rejuvenecimiento en nuestro lujoso spa. Disfruta de nuestros tratamientos exclusivos y promociones.
+            <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold tracking-tighter">
+              Escapa al Spa Sentirse Bien
+            </h1>
+            <p className="mt-2 sm:mt-4 text-sm sm:text-base max-w-md text-muted-foreground">
+              Experimenta lo máximo en relajación y rejuvenecimiento en nuestro lujoso spa.
             </p>
-            <div className="mt-4 flex flex-col gap-2 sm:flex-row">
+            <div className="mt-4 flex flex-col sm:flex-row gap-2">
               <Link
                 href="/products"
                 className="inline-flex h-10 items-center justify-center rounded-md bg-primary px-4 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
@@ -59,10 +61,10 @@ export function PaginaSpa() {
             </div>
           </div>
         </section>
-        <section id="products" className="py-12 md:py-16 lg:py-20 flex justify-center items-center">
+        <section id="products" className="py-8 sm:py-12 md:py-16 overflow-x-hidden">
           <ProductCarousel />
         </section>
-        <section id="about" style={{ backgroundColor: '#fdbeff' }} className="py-12 md:py-16 lg:py-20 flex justify-center">
+        <section id="about" style={{ backgroundColor: '#fdbeff' }} className="py-8 sm:py-12 md:py-16 overflow-x-hidden">
           <div className="container">
             <div className="grid gap-8 md:grid-cols-2">
               <div>
@@ -88,7 +90,7 @@ export function PaginaSpa() {
           </div>
         </section>
         
-        <section id="contact" className="bg-white py-12 md:py-16 lg:py-20 flex justify-center">
+        <section id="contact" className="bg-white py-8 sm:py-12 md:py-16 overflow-x-hidden">
           <div className="container">
             <div className="grid gap-8 md:grid-cols-2">
               <MapAside />

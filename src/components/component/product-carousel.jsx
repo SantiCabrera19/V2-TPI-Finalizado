@@ -18,6 +18,7 @@ const products = [
 export function ProductCarousel() {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [direction, setDirection] = useState(0)
+  const [isMobile, setIsMobile] = useState(false)
 
   const nextProducts = () => {
     setDirection(1)
@@ -45,19 +46,19 @@ export function ProductCarousel() {
   }
 
   return (
-    (<div className="relative w-full max-w-6xl mx-auto my-12 px-4">
-      <div className="absolute top-0 right-0">
+    <div className="relative w-full max-w-6xl mx-auto px-2 sm:px-4 overflow-hidden">
+      <div className="absolute top-0 right-2 sm:right-4">
         <Link href="/products">
-          <Button className="bg-blue-500 text-white hover:bg-blue-600 py-2 px-4 rounded-lg transition-colors duration-300 !important">
+          <Button className="text-xs sm:text-sm bg-blue-500 text-white hover:bg-blue-600 py-1 px-2 sm:px-4 rounded-lg">
             Ver más productos
           </Button>
         </Link>
       </div>
-      <div className="flex justify-between items-center mt-16">
+      <div className="flex justify-between items-center mt-12">
         <Button
           onClick={prevProducts}
-          className="bg-pink-500 text-white hover:bg-pink-600 h-12">
-          <ChevronLeft className="h-6 w-6" />
+          className="bg-pink-500 text-white hover:bg-pink-600 h-8 w-8 sm:h-12 sm:w-12 p-1 sm:p-2">
+          <ChevronLeft className="h-4 w-4 sm:h-6 sm:w-6" />
         </Button>
         <div className="flex justify-center overflow-hidden">
           <AnimatePresence custom={direction} initial={false}>
@@ -69,11 +70,11 @@ export function ProductCarousel() {
               animate="center"
               exit="exit"
               transition={{ type: 'tween', duration: 0.5 }}
-              className="flex space-x-8">
-              {products.slice(currentIndex, currentIndex + 3).map((product) => (
+              className="flex space-x-2 sm:space-x-8">
+              {products.slice(currentIndex, currentIndex + (isMobile ? 1 : 3)).map((product) => (
                 <div
                   key={product.id}
-                  className="w-64 bg-white rounded-lg shadow-md overflow-hidden flex-shrink-0">
+                  className="w-full sm:w-64 bg-white rounded-lg shadow-md overflow-hidden flex-shrink-0">
                   <img
                     src={product.image}
                     alt={product.name}
@@ -94,6 +95,6 @@ export function ProductCarousel() {
           <ChevronRight className="h-6 w-6" />
         </Button>
       </div>
-    </div>)
+    </div>
   );
 }

@@ -17,7 +17,7 @@ export function Header() {
   return (
     <header 
       style={{ 
-        backgroundColor: '#fdbeff', // Nuevo color de fondo más claro
+        backgroundColor: '#fdbeff',
         position: 'sticky',
         top: 0,
         zIndex: 50,
@@ -25,19 +25,21 @@ export function Header() {
         textShadow: '0px 2px 3px rgba(0,0,0,0.1)',
         boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
       }}
-      className="text-gray-800">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex h-20 items-center justify-between">
-          <div className="flex items-center space-x-3 group">
-            <div className="p-2 bg-white shadow-md">
-              <img src="/icon.png" alt="Icono Personalizado" className="w-15 h-12" />
+      className="text-gray-800 overflow-x-hidden">
+      <div className="container mx-auto px-2 sm:px-4">
+        <div className="flex flex-col sm:flex-row items-center justify-between py-2 sm:py-0 space-y-2 sm:space-y-0">
+          <div className="flex items-center space-x-2 sm:space-x-3 w-full sm:w-auto justify-center sm:justify-start">
+            <div className="p-1 sm:p-2 bg-white shadow-md">
+              <img src="/icon.png" alt="Icono Personalizado" className="w-8 h-8 sm:w-12 sm:h-10" />
             </div>
-            <a onClick={scrollToTop} className="text-xl sm:text-2xl md:text-3xl font-extrabold cursor-pointer">
+            <a onClick={scrollToTop} className="text-lg sm:text-xl md:text-2xl font-extrabold cursor-pointer truncate">
               Oasis Sentirse Bien
             </a>
           </div>
           <NavigationButtons />
-          <HeroLogin />
+          <div className="w-full sm:w-auto flex justify-center">
+            <HeroLogin />
+          </div>
         </div>
       </div>
     </header>
