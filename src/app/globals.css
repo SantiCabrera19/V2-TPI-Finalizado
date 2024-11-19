@@ -57,6 +57,25 @@
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
   }
+
+  @media (max-width: 768px) {
+    body {
+      @apply bg-background text-foreground;
+    }
+
+    .some-class {
+      @apply flex-col;
+    }
+
+    h1 {
+      font-size: 1.5rem;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+  }
 }
 
 @layer base {

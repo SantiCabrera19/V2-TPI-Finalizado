@@ -8,13 +8,13 @@ export function HeaderComponent() {
   const { items } = useCart()
 
   return (
-    (<header className="bg-white shadow-md">
-      <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-        <Link href="/" className="text-2xl font-bold text-pink-600">
+    <header className="bg-white shadow-md">
+      <div className="container mx-auto px-2 py-2 flex justify-between items-center">
+        <Link href="/" className="text-xl font-bold text-pink-600">
           Mi Tienda
         </Link>
         <Link href="/cart" className="relative">
-          <ShoppingCart className="h-6 w-6 text-green-500" />
+          <ShoppingCart className="h-5 w-5 text-green-500" />
           {items.length > 0 && (
             <span
               className="absolute -top-2 -right-2 bg-pink-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">
@@ -23,6 +23,6 @@ export function HeaderComponent() {
           )}
         </Link>
       </div>
-    </header>)
+    </header>
   );
 }
