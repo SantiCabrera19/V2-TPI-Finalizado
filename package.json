@@ -3,11 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "npx prisma generate && next build",
-    "start": "next start",
-    "lint": "next lint",
-    "postinstall": "prisma generate"
+    "build": "next build",
+    "start": "next start"
   },
   "dependencies": {
     "@googlemaps/js-api-loader": "^1.16.8",
@@ -36,6 +33,7 @@
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
-    "prisma": "^5.21.1"
+    "prisma": "^5.21.1",
+    "workbox-cli": "^7.3.0"
   }
 }
