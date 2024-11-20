@@ -2,15 +2,12 @@
   "name": "Spa Sentirse Bien",
   "short_name": "Spa",
   "description": "Spa y centro de bienestar",
-  "start_url": "/?standalone=true",
-  "id": "/",
+  "start_url": "/",
   "scope": "/",
   "display": "standalone",
-  "display_override": ["standalone", "fullscreen"],
   "orientation": "portrait",
   "background_color": "#fdbeff",
   "theme_color": "#fdbeff",
-  "prefer_related_applications": false,
   "icons": [
     {
       "src": "/LogoTPI-192x192.png",
