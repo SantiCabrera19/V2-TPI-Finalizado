@@ -16,6 +16,7 @@ export default function RootLayout({ children }) {
         <CartProvider>
           {children}
         </CartProvider>
+        <script src="/standalone-mode.js" />
         <script
           dangerouslySetInnerHTML={{
             __html: `

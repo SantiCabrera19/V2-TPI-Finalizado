@@ -37,6 +37,7 @@ self.addEventListener('fetch', (event) => {
   if (event.request.mode === 'navigate') {
     const url = new URL(event.request.url);
     url.searchParams.set('standalone', 'true');
+    url.searchParams.set('mode', 'standalone');
     event.respondWith(
       fetch(new Request(url.toString(), event.request))
     );
