@@ -1,0 +1,4 @@
+#Wed Nov 20 16:08:56 ART 2024
+base.0=C\:\\Users\\cabre\\Desktop\\TPI - Finish this pls\\v2-tpi-Terminado\\android\\app\\build\\intermediates\\dex\\release\\mergeDexRelease\\classes.dex
+renamed.0=classes.dex
+path.0=classes.dex
